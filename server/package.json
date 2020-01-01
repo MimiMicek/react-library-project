@@ -4,12 +4,41 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration:make": "knex migrate:make initial_schema",
+    "migrate:run": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "seed:make": "knex seed:make",
+    "seed:run": "knex seed:run"
   },
   "author": "Mirjana Erceg",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "eslint-plugin-react": "^7.17.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.2"
+    "express-rate-limit": "^5.0.0",
+    "knex": "^0.20.6",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
+    "objection": "^2.0.10"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "semi": "error"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
   }
 }

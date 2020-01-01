@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './NavLinks.css';
+import Login from '../user/Login';
+import Signup from '../user/Signup';
 
 export default class NavLinks extends React.Component{
     render(){
