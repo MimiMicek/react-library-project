@@ -7,7 +7,7 @@ const saltRounds = 10;
 router.use(cors());
 
 router.get('/users', async (req, res) => {
-    const users = await User.query().column('first_name', 'username').select().eager('users');
+    const users = await User.query().column('first_name').select().eager('users');
     res.json(users);
 });
 
@@ -48,7 +48,7 @@ router.post('/users/signup', (req, res) => {
 
             const newUser = { ...req.body, password: hash };
 
-            const { username} = await User.query().insert(newUser);
+            const { username } = await User.query().insert(newUser);
 
             res.status(200).send({ });
         });

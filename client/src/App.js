@@ -5,7 +5,10 @@ import Books from './components/books/Books';
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
 import Header from './components/navigation/Header';
-import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
+import {Router, Route, Redirect, Switch} from 'react-router-dom';
+import history from './history';
+
+
 
 export default class App extends React.Component{
 
@@ -32,7 +35,7 @@ callBackendAPI = async () => {
 
   render(){
      return (
-      <Router>
+      <Router history={history}>
           { console.log(this.state.data) }
         <Header/>
         <main>

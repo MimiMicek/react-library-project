@@ -5,9 +5,9 @@ exports.up = function(knex) {
 
     .createTable('users', (table) => {
         table.increments('id');
-        table.string('firstName');
-        table.string('lastName');
-        table.string('userName').unique();
+        table.string('first_name');
+        table.string('last_name');
+        table.string('username').unique();
         table.string('email');
         table.timestamp('created_at_timestamp').defaultTo(knex.fn.now());
         table.string('password');

@@ -1,14 +1,15 @@
 import React from 'react';
 import { signup } from './UserAuth';
+import history from '../../history';
 
 export default class Signup extends React.Component {
 
   constructor(props){
       super(props);
       this.state = {
-          firstName: "",
-          lastName: "",
-          userName: "",
+          first_name: "",
+          last_name: "",
+          username: "",
           email: "",
           password: ""
       };
@@ -26,15 +27,15 @@ export default class Signup extends React.Component {
       e.preventDefault();
 
       const newUser = {
-          firstName: this.state.firstName,
-          lastName: this.state.lastName,
-          userName: this.state.userName,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          username: this.state.username,
           email: this.state.email,
           password: this.state.password
         };
     
         signup(newUser).then(res => {
-          this.props.history.push(`/login`);
+          history.push('/login');
         });
   }
         
@@ -48,37 +49,37 @@ export default class Signup extends React.Component {
               <h1 className="h3 mb-3 font-weight-normal">Signup</h1>
 
               <div className="form-group">
-                <label htmlFor="firstName">First name</label>
+                <label htmlFor="first_name">First name</label>
                 <input
-                  type="firstName"
+                  type="first_name"
                   className="form-control"
-                  name="firstName"
+                  name="first_name"
                   placeholder="Write your first name"
-                  value={this.state.firstName}
+                  value={this.state.first_name}
                   onChange={this.onChange}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="lastName">Last name</label>
+                <label htmlFor="last_name">Last name</label>
                 <input
-                  type="lastName"
+                  type="last_name"
                   className="form-control"
-                  name="lastName"
+                  name="last_name"
                   placeholder="Write your last name"
-                  value={this.state.lastName}
+                  value={this.state.last_name}
                   onChange={this.onChange}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="userName">Username</label>
+                <label htmlFor="username">Username</label>
                 <input
-                  type="userName"
+                  type="username"
                   className="form-control"
-                  name="userName"
+                  name="username"
                   placeholder="Choose a user name"
-                  value={this.state.userName}
+                  value={this.state.username}
                   onChange={this.onChange}
                 />
               </div>
