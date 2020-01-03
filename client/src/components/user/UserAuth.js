@@ -1,46 +1,48 @@
 import axios from 'axios';
 
-export const signup = async newUser => {
+export const signup = newUser => {
 
-  const response = await axios
+  return axios
 
     .post('http://localhost:8080/users/signup', {
 
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
+      first_name: newUser.first_name,
+      last_name: newUser.last_name,
       username: newUser.username,
       email: newUser.email,
       password: newUser.password
 
-    });
+    })
 
-  console.log('User is signed up');
+    .then(response => {
+      console.log('User is signed up');
+    });
 };
 
 
-export const login = async existingUser => {
+export const login = user => {
 
-  try {
-
-    const response = await axios
+  return axios
 
       .post('http://localhost:8080/users/login', {
 
-        username: existingUser.username,
-        password: existingUser.password
+        username: user.username,
+        password: user.password
 
+      })
+
+      .then(response => {
+        console.log('User is logged in');
+        return response;
+
+      })
+
+      /* .then(response => {
+        localStorage.setItem('usertoken', response.data);
+        return response.data;
+      }) */
+
+      .catch(err => {
+        console.log(err);
       });
-
-    console.log('User is logged in');
-
-    let firstResponse;
-
-    localStorage.setItem('usertoken', firstResponse.data);
-
-    return firstResponse.data;
-  }
-
-  catch (err) {
-    console.log(err);
-  }
 };

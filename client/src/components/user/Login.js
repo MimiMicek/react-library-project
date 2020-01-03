@@ -1,12 +1,13 @@
 import React from 'react';
 import { login } from './UserAuth';
+import history from '../../history';
 
 export default class Login extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            userName: "",
+            username: "",
             password: ""
         };
     
@@ -21,16 +22,16 @@ export default class Login extends React.Component {
       onSubmit(e) {
         e.preventDefault();
     
-        const existingUser = {
+        const user = {
 
-          userName: this.state.userName,
+          username: this.state.username,
           password: this.state.password
 
         };
     
-        login(existingUser).then(res => {
+        login(user).then(res => {
           if (res) {
-            this.props.history.push(`/`);
+            history.push(`/`);
           }
         });
       }
@@ -45,13 +46,13 @@ export default class Login extends React.Component {
                   <h1 className="h3 mb-3 font-weight-normal">Please log in</h1>
 
                   <div className="form-group">
-                    <label htmlFor="userName">Username</label>
+                    <label htmlFor="username">Username</label>
                     <input
-                      type="userName"
+                      type="username"
                       className="form-control"
-                      name="userName"
+                      name="username"
                       placeholder="Enter username"
-                      value={this.state.userName}
+                      value={this.state.username}
                       onChange={this.onChange}
                     />
                   </div>
