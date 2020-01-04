@@ -1,7 +1,6 @@
 import React from 'react';
 import { saveBook } from './SaveBook';
-
-
+import history from '../../history';
 export default class AddBook extends React.Component{
     constructor(props){
         super(props);
@@ -28,7 +27,7 @@ export default class AddBook extends React.Component{
           };
       
           saveBook(newBook).then(res => {
-            this.props.history.push(`/books`);
+            history.push(`/books`);
           });
     }
         

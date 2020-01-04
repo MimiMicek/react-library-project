@@ -1,49 +1,26 @@
 'use strict';
 const router = require('express').Router();
-const Email = require('../models/Email');
-const cors = require('cors');
-const nodemailer = require('nodemailer');
+const Book = require('../models/Book');
 
-
-router.use(cors());
-
-router.get('/emails', async (req, res) => {
-    const emails = await Email.query().select();
-    res.json(emails);
-    console.log('Getting all emails');
+router.get('/books', async (req, res) => {
+    const books = await Book.query().select();
+    res.json(books);
+    console.log('Getting all books');
 });
 
-router.post('/emails/send-email', async (req, res) => {
-    console.log('Send email');
-    console.log(req.body);
-    if(req.body.subject && req.body.html){
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'myemail@gmail.com',
-                pass: 'password'
-            }
-        });
+router.post('/books/add-book', async (req, res) => {
 
-        const mailOptions = {
-            from: 'myemail@gmail.com',
-            to: req.body.to,
-            subject: req.body.subject,
-            html: req.body.html
-        };
+    if (req.body.title && req.body.text) {
 
-        const email = await Email.query().insert(mailOptions);
+        const newBook = { ...req.body };
 
-        res.status(200).json({ resMessage: email });
+        const { title } = await Book.query().insert(newBook);
 
-        transporter.sendMail(mailOptions, function (err, info) {
-            if(err)
-                console.log(err);
-            else
-                console.log(info);
-        });
+            res.status(200).send(console.log("Book successfully saved in the db"));
+        
     } else {
-        res.status(400).json({ resMessage: "something is missing" });
+        res.status(400).json({ response: "Something is missing" });
     }
 });
+
 module.exports = router;

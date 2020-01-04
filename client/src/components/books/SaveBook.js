@@ -1,14 +1,18 @@
 import axios from 'axios';
 
-export const saveBook = async newBook => {
+export const saveBook = newBook => {
 
-  const response = await axios
+  return axios
 
-    .post('http://localhost:8080/books/new-book', {
+    .post('http://localhost:8080/books/add-book', {
 
       title: newBook.title,
       text: newBook.text
-    });
+      
+    })
 
-  console.log('The book has been saved');
+    .then(response => {
+      console.log('The book has been saved'); 
+    });
+  
 };

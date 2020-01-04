@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import HomePage from './components/home/HomePage';
 import Books from './components/books/Books';
+import MyBooks from './components/books/MyBooks';
+import AddBook from './components/books/AddBook';
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
 import Header from './components/navigation/Header';
@@ -45,6 +47,12 @@ callBackendAPI = async () => {
             </Route>
             <Route path="/books" exact>
               <Books/>
+            </Route>
+            <Route path="/my-books" exact>
+              <MyBooks/>
+            </Route>
+            <Route path="/add-book" exact>
+              <AddBook/>
             </Route>
             <Route path="/login" exact>
               <Login/>

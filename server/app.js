@@ -28,9 +28,13 @@ app.use("/users/login", authLimiter);
 
 app.use("/users/signup", authLimiter);
 
-const usersRoute = require('./routes/usersRoute');
+const usersRoute = require("./routes/usersRoute");
+const booksRoute = require("./routes/booksRoute");
+
+app.use("/books/add-book", booksRoute);
 
 app.use(usersRoute);
+app.use(booksRoute);
 
 const Knex = require('knex');
 const knexConfig = require('./knexfile');

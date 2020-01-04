@@ -37,10 +37,10 @@ export const login = user => {
 
       })
 
-      /* .then(response => {
+      .then(response => {
         localStorage.setItem('usertoken', response.data);
         return response.data;
-      }) */
+      })
 
       .catch(err => {
         console.log(err);
