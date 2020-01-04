@@ -7,7 +7,7 @@ const saltRounds = 10;
 router.use(cors());
 
 router.get('/users', async (req, res) => {
-    const users = await User.query().column('first_name').select().eager('users');
+    const users = await User.query()/* .column('first_name') */.select().eager("books");
     res.json(users);
 });
 

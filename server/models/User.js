@@ -12,7 +12,7 @@ class User extends Model{
 
         return {
 
-            emails: {
+            books: {
                 relation: Model.HasManyRelation,
                 modelClass: Book,
                 join: {

@@ -26,6 +26,6 @@ exports.down = function(knex) {
 
     return knex.schema
 
-    .dropTableIfExists('books')
-    .dropTableIfExists('users');
+        .dropTableIfExists('books')
+        .dropTableIfExists('users');
 };

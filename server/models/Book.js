@@ -2,9 +2,7 @@ const { Model, snakeCaseMappers } = require("objection");
 
 class Book extends Model {
 
-    static get tableName(){
-        return "books";
-    }
+    static tableName = "books";
 
     static get relationMappings() {
 
@@ -12,7 +10,7 @@ class Book extends Model {
 
         return {
 
-            emails: {
+            books: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: User,
                 join: {
