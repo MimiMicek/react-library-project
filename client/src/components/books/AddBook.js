@@ -6,7 +6,8 @@ export default class AddBook extends React.Component{
         super(props);
         this.state = {
             title: "",
-            text: "",
+            author: "",
+            text: ""
         };
 
         this.onChange = this.onChange.bind(this);
@@ -23,6 +24,7 @@ export default class AddBook extends React.Component{
 
         const newBook = {
             title: this.state.title,
+            author: this.state.author,
             text: this.state.text
           };
       
@@ -48,6 +50,19 @@ export default class AddBook extends React.Component{
                     name="title"
                     placeholder="Insert title"
                     value={this.state.title}
+                    onChange={this.onChange}
+                  />
+                </div>
+
+                
+                <div className="form-group">
+                  <label htmlFor="author">Author</label>
+                  <input
+                    type="author"
+                    className="form-control"
+                    name="author"
+                    placeholder="Insert author"
+                    value={this.state.author}
                     onChange={this.onChange}
                   />
                 </div>

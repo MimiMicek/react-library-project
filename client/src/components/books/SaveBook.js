@@ -7,6 +7,7 @@ export const saveBook = newBook => {
     .post('http://localhost:8080/books/add-book', {
 
       title: newBook.title,
+      author: newBook.author,
       text: newBook.text
       
     })

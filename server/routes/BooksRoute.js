@@ -1,6 +1,9 @@
 'use strict';
 const router = require('express').Router();
 const Book = require('../models/Book');
+const cors = require('cors');
+
+router.use(cors());
 
 router.get('/books', async (req, res) => {
     const books = await Book.query().select();
@@ -10,7 +13,7 @@ router.get('/books', async (req, res) => {
 
 router.post('/books/add-book', async (req, res) => {
 
-    if (req.body.title && req.body.text) {
+    if (req.body.title && req.body.author && req.body.text) {
 
         const newBook = { ...req.body };
 
