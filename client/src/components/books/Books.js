@@ -10,19 +10,10 @@ export default class Books extends React.Component{
         title: [],
         author: "",
         text: "",
-        year: "",
+        published: "",
         link: ""
       };
     }
-
- /*  componentDidMount(){
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://www.googleapis.com/books/v1/volumes?q=harry+potter&callback=handleResponse"; // site that doesn’t send Access-Control-*
-    fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
-    .then(response => response.text())
-    .then(books => console.log(books))
-    .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
-  } */
 
   getBook = async(e) => {
 
@@ -33,63 +24,64 @@ export default class Books extends React.Component{
     const api_call = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}`);
   
     const data = await api_call.json();
-  
-    console.log(data.items)
-  
-   if(title){
-  
 
-      this.setState({
-        title: data.items
-       /*  author: data.sys.country,
-        text: data.main.temp,
-        year: data.main.pressure,
-        link: data.main.humidity, */
-      });
-     
-    } else{
-      this.setState({
-        title: "",
-       /*  author: "",
-        text: "",
-        year: "",
-        link: "" */
-      });
+    for (var i = 0; i < data.items.length; i++) {
+      var item = data.items[i].volumeInfo;
     }
-  }
+
+    console.log(item)
+  
+    if(title){
+      this.setState({
+        title: item.title,
+        author: item.authors,
+        text: item.description,
+        published: item.publishedDate,
+        link: item.infoLink
+      });
+      
+      } else{
+        this.setState({
+          title: "",
+          author: "",
+          text: "",
+          published: "",
+          link: ""
+        });
+      }
+    }
     
   render(){
 
-    const { title } = this.state;
+    const { title, author, text, published, link } = this.state;
 
     return(
       <div className="wrapper">
-     
-          <div className="col">
+        <div className="col">
           <BookForm getBook={this.getBook} />
-          </div>
-          
-          <div className="col">
-            {
-                title
-            }
-          </div>
-      {/*      
-            {
-              this.state.showWeather ? 
-              <div className="col form-container">
-              <WeatherPage  city={city}
-                            country={country}
-                            temperature={Math.floor(temperature)}
-                            pressure={pressure}
-                            humidity={humidity}
-                            windSpeed={windSpeed}
-                            weatherStatus={weatherStatus}
-                            error={error}
-              />
-            </div>
-            :null
-            } */}
+        </div>
+        
+         <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author/s</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date published</th>
+                <th scope="col">Link to book</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{ title }</td>
+                <td>{ author }</td>
+                <td>{ text }</td>
+                <td>{ published }</td>
+                <td><a href={ link }>Link to the book</a></td>
+              </tr>
+            </tbody>
+          </table>
+         
         </div>
     );
   }
