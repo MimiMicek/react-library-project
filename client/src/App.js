@@ -9,9 +9,7 @@ import Signup from './components/user/Signup';
 import Header from './components/navigation/Header';
 import {Router, Route, Redirect, Switch} from 'react-router-dom';
 import history from './history';
-
-
-
+import ChangeColour from './components/colour/ChangeColour';
 export default class App extends React.Component{
 
   state = {
@@ -59,6 +57,9 @@ callBackendAPI = async () => {
             </Route>
             <Route path="/signup" exact>
               <Signup/>
+            </Route>
+            <Route path="/change-colour" exact>
+              <ChangeColour/>
             </Route>
             <Redirect to="/"/>     
           </Switch> 

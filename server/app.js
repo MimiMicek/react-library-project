@@ -5,6 +5,7 @@ const server = http.createServer(app);
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const port = process.env.PORT || 8080;
+const socketIO = require('socket.io');
 
 app.use(bodyParser.json());
 
@@ -38,6 +39,21 @@ app.use("/books/add-book", booksRoute);
 
 app.use(usersRoute);
 app.use(booksRoute);
+
+const io = socketIO(server);
+
+io.on("connection", socket => {
+  console.log("New client connected");
+  
+  socket.on("change color", (color) => {
+    console.log("Color changed to: ", color);
+    io.sockets.emit("change color", color);
+  });
+  
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+});
 
 const Knex = require('knex');
 const knexConfig = require('./knexfile');
