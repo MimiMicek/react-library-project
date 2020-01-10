@@ -1,7 +1,7 @@
 import React from 'react';
 import { signup } from './UserAuth';
 import history from '../../history';
-
+import Button from '@material-ui/core/Button';
 export default class Signup extends React.Component {
 
   constructor(props){
@@ -108,12 +108,14 @@ export default class Signup extends React.Component {
                 />
               </div>
 
-              <button
+              <Button
                 type="submit"
                 className="btn btn-lg btn-info btn-block"
+                variant="contained" 
+                color="primary"
               >
                 Signup
-              </button>
+              </Button>
 
             </form>
           </div>

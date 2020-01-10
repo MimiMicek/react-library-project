@@ -24,7 +24,8 @@
     "knex": "^0.20.6",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.2",
-    "objection": "^2.0.10"
+    "objection": "^2.0.10",
+    "socket.io": "^2.3.0"
   },
   "eslintConfig": {
     "extends": "react-app",

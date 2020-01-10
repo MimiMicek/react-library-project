@@ -1,6 +1,7 @@
 import React from 'react';
 import { saveBook } from './SaveBook';
 import history from '../../history';
+import Button from '@material-ui/core/Button';
 export default class AddBook extends React.Component{
     constructor(props){
         super(props);
@@ -79,12 +80,14 @@ export default class AddBook extends React.Component{
                   />
                 </div>
   
-                <button
+                <Button
                   type="submit"
                   className="btn btn-lg btn-info btn-block"
+                  variant="contained" 
+                  color="primary"
                 >
                   Save
-                </button>
+                </Button>
 
               </form>
             </div>

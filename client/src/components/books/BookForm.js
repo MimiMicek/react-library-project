@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from '@material-ui/core/Button';
 export default class BookForm extends React.Component{
    
     render(){
@@ -16,7 +16,12 @@ export default class BookForm extends React.Component{
                                 placeholder="Enter title . . ."
                                 />
                                 <br></br>
-                                <button className="btn btn-info btn-absolute-center">Search</button>
+                                <Button 
+                                    className="btn btn-info btn-absolute-center"
+                                    variant="contained" 
+                                    color="primary"
+                                >Search
+                                </Button>
                     </div>
                 </form>
             </div>       
