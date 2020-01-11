@@ -1,19 +1,20 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import socketIOClient from 'socket.io-client'
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import socketIOClient from 'socket.io-client';
 
 export default class ChangeColour extends React.Component{
     constructor() {
         super();
         this.state = {
           endpoint: "localhost:8080",
-          color: 'white'
+          color: "white"
         };
       }
     
       send = () => {
         const socket = socketIOClient(this.state.endpoint);
-        socket.emit('change color', this.state.color)
+        socket.emit("change color", this.state.color)
       }
 
       setColor = (color) => {
@@ -23,7 +24,7 @@ export default class ChangeColour extends React.Component{
       componentDidMount = () => {
         const socket = socketIOClient(this.state.endpoint);
         setInterval(this.send(), 1000)
-        socket.on('change color', (col) => {
+        socket.on("change color", (col) => {
             document.body.style.backgroundColor = col
         })
     }
@@ -31,15 +32,17 @@ export default class ChangeColour extends React.Component{
     render(){
 
         const socket = socketIOClient(this.state.endpoint);
-            socket.on('change color', (col) => {
+            socket.on("change color", (col) => {
             document.body.style.backgroundColor = col
             })
 
         return(
-            <div style={{ textAlign: "center" }}>
-              <button onClick={() => this.send() }>Change Color</button>
-              <button id="blue" onClick={() => this.setColor('lightskyblue')}>Blue</button>
-              <button id="pink" onClick={() => this.setColor('bisque')}>Pink</button>
+            <div>
+              <ButtonGroup variant="text" aria-label="text primary button group">
+                <Button onClick={() => this.send() }>Change Colour</Button>
+                <Button id="light-blue" onClick={() => this.setColor("LightBlue")}>Light Blue</Button>
+                <Button id="ivory" onClick={() => this.setColor("Ivory")}>Ivory</Button>
+              </ButtonGroup>
             </div>
         )
     }

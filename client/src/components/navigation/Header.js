@@ -3,6 +3,7 @@ import './Header.css';
 import NavLinks from './NavLinks';
 import HamburgerMenu from './HamburgerMenu';
 import Backdrop from './Backdrop';
+import ChangeColour from '../colour/ChangeColour';
 
 const Header = props => {
     
@@ -34,6 +35,8 @@ const Header = props => {
                 <nav className="nav-header">
                     <NavLinks/>
                 </nav>
+                <ChangeColour/>
+
             </header>
             </React.Fragment>
         );

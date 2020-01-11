@@ -1,8 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './NavLinks.css';
-
-
 export default class NavLinks extends React.Component{
     render(){
         return(
@@ -25,10 +23,7 @@ export default class NavLinks extends React.Component{
                <li>
                    <NavLink to="/my-books">My Books</NavLink>
                </li>
-               <li>
-                   <NavLink to="/change-colour">Change Colour</NavLink>
-               </li>
-           </ul>
+            </ul>
         );
     }
 }
