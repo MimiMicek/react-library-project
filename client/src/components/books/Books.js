@@ -7,7 +7,7 @@ export default class Books extends React.Component{
   constructor(props){
     super(props);
       this.state = {
-        title: [],
+        title: "",
         author: "",
         text: "",
         published: "",
@@ -62,7 +62,7 @@ export default class Books extends React.Component{
         </div>
         
          <table className="table">
-            <thead>
+            <thead className="table-primary">
               <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Author/s</th>
