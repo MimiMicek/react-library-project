@@ -2,9 +2,12 @@ const router = require('express').Router();
 const User = require('../models/User');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 
 router.use(cors());
+
+process.env.SECRET_KEY = "secret";
 
 router.get('/users', async (req, res) => {
     const users = await User.query()/* .column('first_name') */.select().eager("books");
@@ -22,13 +25,24 @@ router.post('/users/login', async(req, res) => {
 
             if (error) {
                 res.status(500).json({ response: "Problem hashing the password" });
+                return;
             }
 
             if (response === true) {
                 res.status(200).json({"response": "Nice"});
+
+                let token = jwt.sign(user.toJSON(), process.env.SECRET_KEY, {
+                    expiresIn: 1440
+                });
+    
+                res.send(token);
+
+                return;
+
             } else {
-                res.status(400).json({"response": "User missing"});
+                res.status(400).json({"response": "User missing"});                
             }
+    
         });
 
     } else {

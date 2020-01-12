@@ -9,7 +9,7 @@ export default class HomePage extends React.Component{
         <div className="jumbotron jumbotron-fluid mt-5">
           <div className="col-sm-8 mx-auto">
             <h1 className="text-center">Welcome to online library</h1>
-            <img className="img-fluid" src={library}></img>
+            <img alt="library" className="img-fluid" src={library}></img>
           </div>
         </div>
       </div>

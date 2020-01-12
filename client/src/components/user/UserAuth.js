@@ -4,7 +4,7 @@ export const signup = newUser => {
 
   return axios
 
-    .post('http://localhost:8080/users/signup', {
+    .post("http://localhost:8080/users/signup", {
 
       first_name: newUser.first_name,
       last_name: newUser.last_name,
@@ -15,7 +15,7 @@ export const signup = newUser => {
     })
 
     .then(response => {
-      console.log('User is signed up');
+      console.log("User is signed up");
     });
 };
 
@@ -24,7 +24,7 @@ export const login = user => {
 
   return axios
 
-      .post('http://localhost:8080/users/login', {
+      .post("http://localhost:8080/users/login", {
 
         username: user.username,
         password: user.password
@@ -32,13 +32,13 @@ export const login = user => {
       })
 
       .then(response => {
-        console.log('User is logged in');
+        console.log("User is logged in");
         return response;
 
       })
 
       .then(response => {
-        localStorage.setItem('usertoken', response.data);
+        localStorage.setItem("usertoken", response.data);
         return response.data;
       })
 
